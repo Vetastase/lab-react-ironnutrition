@@ -3,15 +3,21 @@
 // and content that the component should render.
 // Remember to import Ant Design components before using them.
 import { Divider, Input } from 'antd';
+import { useState } from 'react';
 
 // Iteration 5
-function Search(props) {
+function Search({filteredItems}) {
+  const [query , setQuery] = useState("") 
+
+  const handleInput = (event) => {
+    event.preventDefault()
+    setQuery(event.target.value)
+    filteredItems(event.target.value)
+  }
   return (
     <>
       <Divider>Search</Divider>
-
-      <label>Search</label>
-      <Input value={undefined} type="text" onChange={() => {}} />
+      <Input value={query} type="text" onChange={handleInput} />
     </>
   );
 }
